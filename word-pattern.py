@@ -2,15 +2,9 @@ import string
 def check_command(pattern, command):
     seq_size = len(command)
     pattern = format(pattern, '0{0}b'.format(seq_size))
-    if len(pattern) != len(command): return False
     formated_command = map(lambda x: '1' if x not in string.digits else '0', command)
     formated_command = "".join(formated_command)
-
-    res = [i==j for i,j in zip(formated_command,pattern)]
-    if False in res:
-        return False
-    else:
-        return True
+    return formated_command == pattern
 
 if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing
