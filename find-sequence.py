@@ -52,6 +52,25 @@ def checkio(matrix):
     not any(find_repetitions(line) for line in cols) and not any(find_repetitions(line) for line in rows) and not any(
         find_repetitions(line) for line in forward) and not any(find_repetitions(line) for line in backward)) else False
 
+
+def checkio(matrix):
+    N = len(matrix)
+    def seq_len(x, y, dx, dy, num):
+        if 0 <= x < N and 0 <= y < N and matrix[y][x] == num:
+            return 1 + seq_len(x + dx, y + dy, dx, dy, num)
+        else:
+            return 0
+
+    DIR = [(dx, dy) for dy in range(-1, 2)
+                    for dx in range(-1, 2)
+                    if dx != 0 or dy != 0]
+    for y in range(N):
+        for x in range(N):
+            for dx, dy in DIR:
+                if seq_len(x, y, dx, dy, matrix[y][x]) >= 4:
+                    return True
+    return False
+
 if __name__ == '__main__':
 
     # #These "asserts" using only for self-checking and not necessary for auto-testing
@@ -82,3 +101,16 @@ if __name__ == '__main__':
         [4, 6, 5, 1, 3, 1],
         [1, 1, 9, 1, 2, 1]
     ]) == True, "Diagonal"
+    matrix = [
+        [1, 2, 1, 1],
+        [1, 1, 4, 1],
+        [1, 3, 1, 6],
+        [1, 7, 2, 5]
+    ]
+    print zip(matrix)[0][0]
+    print zip(matrix)
+    print zip(*matrix)
+    DIR = [(dx, dy) for dy in range(-1, 2)
+                    for dx in range(-1, 2)
+                    if dx != 0 or dy != 0]
+    print DIR
