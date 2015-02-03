@@ -14,15 +14,15 @@ def flatten(dictionary):
 
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert flatten({"key": "value"}) == {"key": "value"}, "Simple"
     assert flatten(
         {"key": {"deeper": {"more": {"enough": "value"}}}}
     ) == {"key/deeper/more/enough": "value"}, "Nested"
     assert flatten({"empty": {}}) == {"empty": ""}, "Empty value"
     assert flatten({"name": {
-                        "first": "One",
-                        "last": "Drone"},
+        "first": "One",
+        "last": "Drone"},
                     "job": "scout",
                     "recent": {},
                     "additional": {
@@ -35,3 +35,4 @@ if __name__ == '__main__':
           "recent": "",
           "additional/place/zone": "1",
           "additional/place/cell": "2"}
+
