@@ -1,10 +1,7 @@
 def flat_list(a):
     r=[]
-    def f_l(a):
+    def l(a):
         for e in a: 
-            if type(e)==int:
-                r.append(e)
-            else:
-                f_l(e)
-    f_l(a)
+            r.append(e) if type(e)==int else l(e)   
+    l(a)
     return r
