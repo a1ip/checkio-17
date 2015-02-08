@@ -35,4 +35,3 @@ if __name__ == '__main__':
           "recent": "",
           "additional/place/zone": "1",
           "additional/place/cell": "2"}
-
