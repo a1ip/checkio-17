@@ -10,10 +10,8 @@ def checkio(pattern, image):
             if pattern == ([r[col:col+p_cols] for r in image[row:row+p_rows]]):
                 for r in range(row,row+p_rows):
                     for c in range(col,col+p_cols):
-                        if image[r][c]==0:
-                            image[r][c]=2
-                        else:
-                            image[r][c]=3
+                        image[r][c]+=2
+
     return image
 
 #These "asserts" using only for self-checking and not necessary for auto-testing
