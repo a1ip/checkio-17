@@ -1,19 +1,15 @@
 from heapq import *
 
-
 def golf(building, time):
-    return sum([building[i][i] for i in range(1, len(building)) if dfs(building, i, time) <= time])
-
+    return sum([building[i][i] for i in range(1, len(building)) if dfs(building, i) <= time])
 
 def get_neighbours(building, position):
     return [(i, k) for k, i in enumerate(building[position]) if k != position and i != 0]
 
-
-def dfs(building, i, time):
+def dfs(building, i):
     visited, h = set(), [(0,i)]
     while h:
         length, position = heappop(h)
-        # print length, position
         if position == 0:
             return length
         if position in visited:
@@ -23,7 +19,6 @@ def dfs(building, i, time):
             if neigh_position in visited:
                 continue
             heappush(h, (length + l,neigh_position))
-            # print h
     return 1000000
 
 
