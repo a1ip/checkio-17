@@ -1,8 +1,4 @@
 from collections import Counter
-from itertools import chain
-
-def find_least_connected_2(rings):
-    return Counter(chain(*[i for i in rings if len(i) > 1])).most_common()[-1][0]
 
 def find_least_connected(rings):
     return Counter([r for i in rings for r in i if len(i) > 1]).most_common()[-1][0]
@@ -27,17 +23,5 @@ if __name__ == '__main__':
     assert break_rings(({5, 6}, {4, 5}, {3, 4}, {3, 5}, {3, 6})) == 2, "Chain"
     assert break_rings(({8, 9}, {1, 9}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 6}, {6, 7}, {8, 7})) == 5, "Long chain"
 
-    rings = ({5, 6}, {4, 5}, {3, 4}, {3, 5}, {3, 6})
-    # how it works?
-    from itertools import combinations
-    def break_rings(rings):
-        N = max(map(max, rings))
-        for i in range(1,N):
 
-            for c in combinations(range(1,N+1), i):
-                for s in rings:
-                    if all(cc not in s for cc in c):
-                        break
-                else:
-                    return i
-    break_rings(rings)
+
