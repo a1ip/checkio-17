@@ -59,6 +59,19 @@ def max(*args, **kwargs):
         if arg>max_val: max_val=arg
     return max_val
 
+def min(*args, **kwargs):
+    key = kwargs.get("key", None)
+    if len(args)==1:
+        args = args[0]
+    min_val, min_v = None, None
+    for arg in args:
+        real_arg = arg
+        if key: arg=key(arg)
+        if min_val is None or arg<min_val:
+            min_val=arg
+            min_v=real_arg
+    return  min_v
+
 
 if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing
