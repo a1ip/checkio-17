@@ -1,6 +1,6 @@
 from fractions import Fraction
 def divide_pie(groups):
-    original = real = 1
+    real = 1
     drons = sum(map(abs, groups))
     for i in groups:
         if i>0:
