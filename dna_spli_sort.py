@@ -65,3 +65,5 @@ def golf(s,p):
 
 print "golf func"
 print golf(s,2)
+
+golf=lambda s,p:''.join(v[1]for v in sorted([(sum(e[i]>e[j]for i in range(len(e))for j in range(i,len(e))),e)for e in map(''.join,zip(*[iter(s)]*p))],key=lambda t:t[0]))
